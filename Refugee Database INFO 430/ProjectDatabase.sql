@@ -541,7 +541,6 @@ GO
 
 -- GET IDs
 
--- Fran
 CREATE PROCEDURE GetSupplyTypes
 	@TypeName nvarchar(50),
 	@ID int Output 
@@ -588,7 +587,6 @@ SET @ID = (
 );
 GO 
 
--- Anhad
 CREATE PROCEDURE GetLocationType 
 	@TypeName nvarchar(50),
 	@ID int Output 
@@ -633,7 +631,6 @@ SET @ID = (
 );
 GO 
 
--- Erika
 CREATE PROCEDURE GetDemographicType
 	@TypeName nvarchar(50),
 	@ID int Output 
@@ -689,7 +686,6 @@ SET @ID = (
 );
 GO 
 
--- Larry
 CREATE PROCEDURE GetEvent 
 	@Name nvarchar(50),
 	@Date date,
@@ -821,7 +817,6 @@ GO
 
 -- INSERT PROCEDURES
 
--- Erika
 -- (Supply)
 CREATE PROCEDURE InsertSupplyType 
 	@SupplyTypeName1 nvarchar(50),
@@ -956,7 +951,6 @@ BEGIN
 END 
 GO 
 
--- Fran
 CREATE PROCEDURE InsertWTOStatus 
 	@StatusName1 nvarchar(50),
 	@StatusDesc1 nvarchar(50)
@@ -1029,7 +1023,6 @@ BEGIN
 END 
 GO 
 
--- Anhad
 CREATE PROCEDURE InsertEventType 
 	@EventTypeName1 nvarchar(50),
 	@EventTypeDesc1 nvarchar(50)
@@ -1119,7 +1112,6 @@ BEGIN
 END 
 GO 
 
--- Larry
 CREATE PROCEDURE InsertDemographic 
 	@DemographicTypeName1 nvarchar(50),
 	@DemographicName1 nvarchar(50), 
@@ -1836,7 +1828,6 @@ GO
 -- Wrappers for Populating --
 ---------------------
 
--- Erika
 CREATE TABLE CITYPK(
 	City_PK INT IDENTITY(1,1) primary key,
 	CityName [nvarchar](100) NULL,
@@ -1940,7 +1931,6 @@ VALUES
 ('eventname5')
 GO
 
--- Anhad
 CREATE PROCEDURE EVENT_WRAPPER
 AS
 
@@ -1985,7 +1975,6 @@ GO
 DROP TABLE EVENTPK
 GO
 
--- Larry
 CREATE PROCEDURE wrapper_DONATION_INSERT 
 @Run INT 
 AS 
@@ -2040,7 +2029,6 @@ GO
 EXEC wrapper_DONATION_INSERT 500
 GO
 
--- Erika
 CREATE PROCEDURE WRAPPER_INSERT_VOLUNTEER_EVENT_ROLE
 @Run INT
 AS
@@ -2082,7 +2070,6 @@ GO
 EXEC WRAPPER_INSERT_VOLUNTEER_EVENT_ROLE 500
 GO
 
--- Fran
 CREATE PROCEDURE usp_INSERT_COUNTRY_STATUS_WRAPPER
 @RUN INT
 AS
@@ -2114,7 +2101,6 @@ GO
 -- Computed Columns --
 ---------------------
 
--- Anhad
 CREATE FUNCTION timeSinceEvent(@EventDate DATE)
 RETURNS INT
 AS
@@ -2143,7 +2129,6 @@ ALTER TABLE VOLUNTEER
 ADD VolunteerAge AS dbo.volunteerAge(VolunteerDOB)
 GO
 
--- Fran
 CREATE FUNCTION numOfDonations(@ID INT)
 RETURNS INT
 AS
@@ -2184,8 +2169,6 @@ ALTER TABLE COUNTRY
 ADD numOfOrgs AS dbo.numOfOrgs(CountryID)
 GO
 
--- Erika
-
 CREATE FUNCTION lifetimeDonorAmount(@ID INT)
 RETURNS Numeric(8,2)
 AS
@@ -2223,8 +2206,6 @@ ALTER TABLE DONATION
 ADD donationAmountRange AS dbo.donationAmountRange(DonationID)
 GO
 
--- Larry
-
 CREATE FUNCTION clientNumChallenges(@ID INT)
 RETURNS INT
 AS
@@ -2258,8 +2239,6 @@ GO
 ---------------------
 -- Business Rules --
 ---------------------
-
--- Anhad
 
 -- No volunteer below the age of 16 can volunteer as a lead at a conference
 
@@ -2321,8 +2300,6 @@ ADD CONSTRAINT DonationToDevelopedNation
 CHECK(dbo.FN_DonationToDevelopedNation() = 0)
 GO
 
--- Erika
-
 CREATE FUNCTION FN_DonationAmount()
 RETURNS INT
 AS BEGIN
@@ -2374,7 +2351,6 @@ ALTER TABLE [EVENT]
 ADD CONSTRAINT SchoolsHostEventsAtSchools
 CHECK(dbo.FN_SchoolsHostEventsAtSchools() = 0)
 GO
--- Larry
 
 --- Clients facing a challenge of housing, employment or resources will have a critical severity status
 
@@ -2444,8 +2420,6 @@ ADD CONSTRAINT InternationalOrganizationType
 CHECK(dbo.FN_InternationalOrganizationType() = 0)
 GO
 
--- Fran
-
 CREATE FUNCTION FN_DonationQuantity()
 RETURNS INT
 AS BEGIN
@@ -2499,7 +2473,6 @@ GO
 -- Views --
 ---------------------
 
--- Erika
 CREATE VIEW vwCOUNTRY_ORG
 AS
 SELECT f.CountryName, f.Num_Org
@@ -2529,7 +2502,6 @@ JOIN DONOR DO
 ON f.DonorID = DO.DonorID
 GO
 
--- Anhad
 -- How many volunteers volunteered at Conferences in Schools categorized by Organization
 
 CREATE VIEW vw_NUM_VOLUNTEERS_ORGANIZATION_SCHOOL_CONFERENCES
@@ -2569,7 +2541,6 @@ AS (
 )
 GO
 
--- Larry
 
 CREATE VIEW vwDIS_DATE
 AS
@@ -2604,7 +2575,6 @@ JOIN CITY CT ON CT.CityID = H.HomeID
 JOIN COUNTRY C ON CT.CountryID = C.CountryID
 GO
 
--- Fran
 
 CREATE VIEW vwTOP_5_ORG_DONOR
 AS
