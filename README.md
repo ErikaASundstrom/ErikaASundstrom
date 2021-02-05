@@ -7,4 +7,4 @@ Projects Currently Included:
 1. Olympics Data | INFO 201
 2. Refugee Database | INFO 430
 
-For questions and inquires please email me at [sundstrom.a.erika@gmail.com](sundstrom.a.erika@gmail.com)
+For questions and inquires please email me at <sundstrom.a.erika@gmail.com>
