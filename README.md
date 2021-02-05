@@ -7,5 +7,7 @@ the code is still there. Projects without working links will be shown in _italic
 Projects Currently Included:
 1. Olympics Data | INFO 201
 2. Refugee Database | INFO 430
+3. _Pet Adoption Helper | INFO 340_
+4. _Seattle Food Banks | INFO 340_
 
 For questions and inquires please email me at <sundstrom.a.erika@gmail.com>
