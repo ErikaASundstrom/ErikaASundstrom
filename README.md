@@ -10,4 +10,4 @@ Projects Currently Included:
 3. _Pet Adoption Helper_ | INFO 340
 4. _Seattle Food Banks_ | INFO 340
 
-For questions and inquires please email me at <sundstrom.a.erika@gmail.com>
+For questions and inquiries please email me at <sundstrom.a.erika@gmail.com>
